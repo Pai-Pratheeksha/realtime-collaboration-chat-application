@@ -6,17 +6,15 @@
 
 <body>
 
-<h2>Realtime Chat Test</h2>
+<h2>Realtime Chat</h2>
+
+<input id="messageInput" placeholder="Type message">
+<button onclick="sendMessage()">Send</button>
+
+<ul id="messages"></ul>
 
 <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-
-<script>
-  const socket = io("http://localhost:3000");
-
-  socket.on("connect", () => {
-    console.log("Connected to server");
-  });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
