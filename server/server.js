@@ -24,11 +24,23 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 
-  socket.on("join_room", (room) => {
+  socket.on("join_room", async (room) => {
 
     socket.join(room);
 
     console.log(`User ${socket.id} joined room ${room}`);
+
+    try {
+      const result = await pool.query(
+        "SELECT * FROM messages WHERE room = $1 ORDER BY created_at ASC",
+        [room]
+      );
+
+      socket.emit("load_messages", result.rows);
+
+    } catch (err) {
+      console.error("Error loading messages:", err);
+    }
 
   });
 

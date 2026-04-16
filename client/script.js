@@ -10,6 +10,8 @@ function joinRoom() {
 
   socket.emit("join_room", room);
 
+  document.getElementById("messages").innerHTML = ""; // clear UI
+
   console.log("Joined room:", room);
 
 }
@@ -35,5 +37,22 @@ socket.on("chat_message", (msg) => {
   li.textContent = msg;
 
   document.getElementById("messages").appendChild(li);
+
+});
+
+socket.on("load_messages", (messages) => {
+
+  const messageList = document.getElementById("messages");
+
+  messageList.innerHTML = ""; // clear old messages
+
+  messages.forEach((msg) => {
+
+    const li = document.createElement("li");
+    li.textContent = msg.message;
+
+    messageList.appendChild(li);
+
+  });
 
 });
