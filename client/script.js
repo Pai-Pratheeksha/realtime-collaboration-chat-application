@@ -1,4 +1,5 @@
 const socket = io("http://localhost:3000");
+let typingTimeout;
 
 let currentRoom = "";
 
@@ -58,5 +59,42 @@ socket.on("load_messages", (messages) => {
     messageList.appendChild(li);
 
   });
+
+});
+
+socket.on("typing", (username) => {
+
+  const typingDiv = document.getElementById("typingIndicator");
+
+  typingDiv.textContent = `${username} is typing...`;
+
+});
+
+socket.on("stop_typing", () => {
+
+  const typingDiv = document.getElementById("typingIndicator");
+
+  typingDiv.textContent = "";
+
+});
+
+const messageInput = document.getElementById("messageInput");
+
+messageInput.addEventListener("input", () => {
+
+  const username = document.getElementById("usernameInput").value;
+
+  socket.emit("typing", {
+    room: currentRoom,
+    username: username
+  });
+
+  clearTimeout(typingTimeout);
+
+  typingTimeout = setTimeout(() => {
+    socket.emit("stop_typing", {
+      room: currentRoom
+    });
+  }, 1000);
 
 });
