@@ -7,14 +7,14 @@ Supports room-based messaging, chat history, typing indicators, and online user 
 
 ## 🚀 Features
 
-- 🔴 Real-time messaging using WebSockets (Socket.IO)
-- 🧑‍🤝‍🧑 Room-based chat (like Slack channels)
-- 💾 Persistent message storage using PostgreSQL
-- 📜 Chat history loading on room join
-- 👤 Usernames for each message
-- ✍️ Typing indicator (real-time)
-- 🟢 Online users tracking per room
-- 🎨 Clean UI with sidebar layout
+- Real-time messaging using WebSockets (Socket.IO)
+- Room-based chat (like Slack channels)
+- Persistent message storage using PostgreSQL
+- Chat history loading on room join
+- Usernames for each message
+- Typing indicator (real-time)
+- Online users tracking per room
+- Clean UI with sidebar layout
 
 ---
 
@@ -33,4 +33,3 @@ Supports room-based messaging, chat history, typing indicators, and online user 
 **Database**
 - PostgreSQL
 
----
