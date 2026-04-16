@@ -18,23 +18,27 @@ function joinRoom() {
 
 function sendMessage() {
 
-  const input = document.getElementById("messageInput");
+  const messageInput = document.getElementById("messageInput");
+  const usernameInput = document.getElementById("usernameInput");
 
-  const message = input.value;
+  const message = messageInput.value;
+  const username = usernameInput.value;
 
   socket.emit("chat_message", {
     room: currentRoom,
-    message: message
+    message: message,
+    username: username
   });
 
-  input.value = "";
+  messageInput.value = "";
+
 }
 
-socket.on("chat_message", (msg) => {
+socket.on("chat_message", (data) => {
 
   const li = document.createElement("li");
 
-  li.textContent = msg;
+  li.textContent = `${data.username}: ${data.message}`;
 
   document.getElementById("messages").appendChild(li);
 
@@ -49,7 +53,7 @@ socket.on("load_messages", (messages) => {
   messages.forEach((msg) => {
 
     const li = document.createElement("li");
-    li.textContent = msg.message;
+    li.textContent = `${msg.username}: ${msg.message}`;
 
     messageList.appendChild(li);
 
