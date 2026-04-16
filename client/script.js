@@ -46,7 +46,7 @@ socket.on("chat_message", (data) => {
 
   const li = document.createElement("li");
 
-  li.textContent = `${data.username}: ${data.message}`;
+  li.innerHTML = `<strong>${data.username}</strong>: ${data.message}`;
 
   document.getElementById("messages").appendChild(li);
 

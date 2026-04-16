@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #2f3136;
+  color: white;
+  padding: 15px;
+}
+
+.sidebar input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  background: #5865f2;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Chat area */
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #36393f;
+  color: white;
+}
+
+#messages {
+  list-style: none;
+  padding: 15px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+#messages li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #40444b;
+  border-radius: 8px;
+}
+
+/* Input */
+.inputArea {
+  display: flex;
+  padding: 10px;
+  background: #2f3136;
+}
+
+.inputArea input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.inputArea button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background: #5865f2;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Typing */
+#typingIndicator {
+  padding-left: 15px;
+  font-size: 12px;
+  color: #aaa;
+}

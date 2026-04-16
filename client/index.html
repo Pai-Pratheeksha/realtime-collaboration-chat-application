@@ -2,28 +2,40 @@
 <html>
 <head>
   <title>Realtime Chat</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h2>Realtime Chat</h2>
+<div class="app">
 
-<label>Username:</label>
-<input id="usernameInput" placeholder="Enter your name">
-<br><br>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Chat App</h2>
 
-<label>Room:</label>
-<input id="roomInput" placeholder="Enter room name">
-<button onclick="joinRoom()">Join Room</button>
+    <input id="usernameInput" placeholder="Username">
+    <input id="roomInput" placeholder="Room">
 
-<br><br>
+    <button onclick="joinRoom()">Join</button>
 
-<input id="messageInput" placeholder="Type message">
-<button onclick="sendMessage()">Send</button>
+    <p id="onlineUsers"></p>
+  </div>
 
-<ul id="messages"></ul>
-<p id="typingIndicator"></p>
-<p id="onlineUsers"></p>
+  <!-- Chat Area -->
+  <div class="chat">
+
+    <ul id="messages"></ul>
+
+    <p id="typingIndicator"></p>
+
+    <div class="inputArea">
+      <input id="messageInput" placeholder="Type message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
+  </div>
+
+</div>
 
 <script src="http://localhost:3000/socket.io/socket.io.js"></script>
 <script src="script.js"></script>
