@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
+const pool = require("./db");
 
 const app = express();
 
@@ -44,6 +45,14 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("User disconnected:", socket.id);
   });
+});
+
+pool.query("SELECT NOW()", (err, res) => {
+  if (err) {
+    console.error("DB connection error", err);
+  } else {
+    console.log("DB connected:", res.rows[0]);
+  }
 });
 
 /* Start server */
